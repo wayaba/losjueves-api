@@ -1,12 +1,16 @@
 package com.blitox.losjuevesapi.model;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity; 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue; 
 import javax.persistence.GenerationType; 
-import javax.persistence.Id; 
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,6 +24,9 @@ public class Player {
 	private String lastName;
 	private String nickName;
 	private Date birth;
+	
+	@OneToMany(mappedBy = "mvp", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<GameDate> mvps;
 	
 	public Player() {
 		
@@ -71,6 +78,16 @@ public class Player {
 		this.birth = birth;
 	}
 
+	/*
+	// gameDate
+    public void setMvps(Set<GameDate> gameDate){
+    	this.mvps = gameDate;
+    }
+    
+    public Set<GameDate> Mvps(){
+    	return this.mvps;
+    }
+    */
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", nickName=" + nickName
