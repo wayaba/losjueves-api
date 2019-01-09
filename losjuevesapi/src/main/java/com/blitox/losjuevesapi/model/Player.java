@@ -1,7 +1,11 @@
 package com.blitox.losjuevesapi.model;
 
 import java.util.Date;
+<<<<<<< Upstream, based on origin/master
 import java.util.Set;
+=======
+import java.util.List;
+>>>>>>> 65f8303 subo todo
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,8 +29,13 @@ public class Player {
 	private String nickName;
 	private Date birth;
 	
+<<<<<<< Upstream, based on origin/master
 	@OneToMany(mappedBy = "mvp", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<GameDate> mvps;
+=======
+	@OneToMany(mappedBy="mvp")
+	private List<GameDate> mvps;
+>>>>>>> 65f8303 subo todo
 	
 	public Player() {
 		
@@ -78,6 +87,7 @@ public class Player {
 		this.birth = birth;
 	}
 
+<<<<<<< Upstream, based on origin/master
 	/*
 	// gameDate
     public void setMvps(Set<GameDate> gameDate){
@@ -88,6 +98,9 @@ public class Player {
     	return this.mvps;
     }
     */
+=======
+	
+>>>>>>> 65f8303 subo todo
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", nickName=" + nickName
