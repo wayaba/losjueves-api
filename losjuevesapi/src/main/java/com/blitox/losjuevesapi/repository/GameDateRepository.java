@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.blitox.losjuevesapi.model.GameDate;
 
 @Repository
-public interface GameDateRepository extends JpaRepository<GameDate, Long>{
+public interface GameDateRepository extends JpaRepository<GameDate, Long>,GameDateRepositoryCustom{
 
 }

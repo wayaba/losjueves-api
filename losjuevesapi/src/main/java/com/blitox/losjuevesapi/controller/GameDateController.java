@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RestController; 
 import com.blitox.losjuevesapi.exception.ResourceNotFoundException; 
-import com.blitox.losjuevesapi.model.GameDate; 
+import com.blitox.losjuevesapi.model.GameDate;
+import com.blitox.losjuevesapi.model.Player;
 import com.blitox.losjuevesapi.repository.GameDateRepository; 
 
 @RestController @RequestMapping("/losjueves/api")
@@ -33,6 +34,11 @@ public class GameDateController {
 	public ResponseEntity<GameDate> getGameDateById(@PathVariable(value = "id") Long id) throws ResourceNotFoundException{
 		GameDate gameDate = gameDateRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("GameDate not found for this id :: " + id)); 
 		return ResponseEntity.ok().body(gameDate); 
+	}
+	
+	@GetMapping("/gamedates/getnumbers")
+	public List<Player> getNumbers(){
+		return gameDateRepository.getGameNumbers();
 	}
 	
 	@PostMapping("/gamedates") 

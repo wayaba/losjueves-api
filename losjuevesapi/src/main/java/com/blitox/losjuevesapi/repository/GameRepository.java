@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.blitox.losjuevesapi.model.Game;
 
 @Repository
-public interface GameRepository extends JpaRepository<Game, Long>{
+public interface GameRepository extends JpaRepository<Game, Long>, GameRepositoryCustom{
 
 }
