@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class CurrentTable {
+public class Table {
 
 	@Id
     private String nick_name;

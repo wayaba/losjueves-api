@@ -4,10 +4,11 @@ import java.util.List;
  
 import org.springframework.stereotype.Repository;
 
-import com.blitox.losjuevesapi.model.CurrentTable;
+import com.blitox.losjuevesapi.model.Table;
 
 @Repository
 public interface GameRepositoryCustom{
 
-	List<CurrentTable> getCurrentTable();
+	List<Table> getGameTable();
+	List<Table> getGameTableByNumber(int number);
 }

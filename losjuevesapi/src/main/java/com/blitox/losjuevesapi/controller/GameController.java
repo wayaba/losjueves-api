@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RestController; 
 import com.blitox.losjuevesapi.exception.ResourceNotFoundException;
-import com.blitox.losjuevesapi.model.CurrentTable;
+import com.blitox.losjuevesapi.model.Table;
 import com.blitox.losjuevesapi.model.Game; 
 import com.blitox.losjuevesapi.repository.GameRepository; 
 
@@ -36,9 +36,15 @@ public class GameController {
 		return ResponseEntity.ok().body(game); 
 	}
 	
-	@GetMapping("/games/currenttable")
-	public List<CurrentTable> getCurrentTable(){
-		return gameRepository.getCurrentTable();
+	@GetMapping("/games/table")
+	public List<Table> getGameTable(){
+		return gameRepository.getGameTable();
+	}
+	
+	@GetMapping("/games/table/{number}")
+	public List<Table> getGameTableByNumber(@PathVariable(value = "number") int number){
+		return gameRepository.getGameTableByNumber(number); 
+		 
 	}
 	
 	@PostMapping("/games") 
