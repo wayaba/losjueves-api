@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.blitox.losjuevesapi.model.Table;
+import com.blitox.losjuevesapi.model.TableView;
 
 
 public class GameRepositoryImpl implements GameRepositoryCustom{
@@ -15,7 +15,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	EntityManager entityManager;
 	
 	@Override
-	public List<Table> getGameTable() {
+	public List<TableView> getGameTable() {
 		
 	 Query query = entityManager.createNativeQuery(""
 	 		+ "SELECT p.nick_name, sum(r.points) points\n" + 
@@ -30,13 +30,13 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	 		"left join result rdraw on (g.id_result = rdraw.id and rdraw.id = 2)\n" + 
 	 		"left join result rlose on (g.id_result = rlose.id and rlose.id = 3)\n" + 
 	 		"group by p.nick_name\n" + 
-	 		"order by points desc",Table.class);
+	 		"order by points desc",TableView.class);
 		
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Table> getGameTableByNumber(int number) {
+	public List<TableView> getGameTableByNumber(int number) {
 		 Query query = entityManager.createNativeQuery(""
 			 		+ "SELECT p.nick_name, sum(r.points) points\n" + 
 			 		", count(rwin.id) win\n" + 
@@ -52,7 +52,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 			 		"inner join game_date gd on (g.id_game_date = gd.id)\n" +
 			 		"where gd.number <= " + number +"\n" +
 			 		"group by p.nick_name\n" + 
-			 		"order by points desc",Table.class);
+			 		"order by points desc",TableView.class);
 				
 				return query.getResultList();
 	}

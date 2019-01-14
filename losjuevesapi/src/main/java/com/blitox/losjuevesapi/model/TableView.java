@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Table {
+public class TableView {
 
 	@Id
     private String nick_name;
