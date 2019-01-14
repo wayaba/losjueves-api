@@ -9,6 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blitox</groupId>
+	<!-- Output to jar format -->
+	<packaging>jar</packaging>
 	<artifactId>losjuevesapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>losjuevesapi</name>
