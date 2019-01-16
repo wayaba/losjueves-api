@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController; 
 import com.blitox.losjuevesapi.exception.ResourceNotFoundException; 
 import com.blitox.losjuevesapi.model.GameDate;
-import com.blitox.losjuevesapi.model.Player;
+import com.blitox.losjuevesapi.model.GameDateDetail;
 import com.blitox.losjuevesapi.repository.GameDateRepository; 
 
 @RestController @RequestMapping("/losjueves/api")
@@ -36,14 +36,14 @@ public class GameDateController {
 		return ResponseEntity.ok().body(gameDate); 
 	}
 	
-	@GetMapping("/gamedates/getnumbers")
-	public List<Player> getNumbers(){
-		return gameDateRepository.getGameNumbers();
-	}
-	
 	@PostMapping("/gamedates") 
 	public GameDate createGameDate(@Valid @RequestBody GameDate gameDate) { 
 		return gameDateRepository.save(gameDate); 
+	}
+	
+	@GetMapping("/gamedates/detail")
+	public List<GameDateDetail> getgetGameDateDetail(){
+		return gameDateRepository.getGameDateDetail();
 	}
 	
 	@PutMapping("/gamedates/{id}") 

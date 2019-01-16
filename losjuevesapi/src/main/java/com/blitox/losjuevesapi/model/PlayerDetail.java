@@ -4,12 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class TableView {
+public class PlayerDetail {
 
 	@Id
-	private long id_player;
-	
-    private String nick_name;
+    private String description;
 
     private String points;
     
@@ -20,7 +18,8 @@ public class TableView {
     private String draw;
     
     private String pj;
-
+    
+    private String mvp;
     
     /**
      * Generic put method to map JPA native Query to this object.
@@ -29,8 +28,8 @@ public class TableView {
      * @param value
      */
     public void put(Object column, Object value) {
-        if (((String) column).equals("nick_name")) {
-        	setNick_name((String) value);
+        if (((String) column).equals("description")) {
+        	setDescription((String) value);
         } else if (((String) column).equals("points")) {
         	setPoints((String) value);
         } else if (((String) column).equals("win")) {
@@ -41,17 +40,17 @@ public class TableView {
         	setLose((String) value);
         } else if (((String) column).equals("pj")) {
         	setPj((String) value);
-        } else if (((String) column).equals("lose")) {
-        	setLose((String) value);
+        } else if (((String) column).equals("mvp")) {
+        	setMvp((String) value);
         }
     }
-    
-	public String getNick_name() {
-		return nick_name;
+
+	public String getDescription() {
+		return description;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getPoints() {
@@ -93,5 +92,15 @@ public class TableView {
 	public void setPj(String pj) {
 		this.pj = pj;
 	}
+
+	public String getMvp() {
+		return mvp;
+	}
+
+	public void setMvp(String mvp) {
+		this.mvp = mvp;
+	}
+    
+	
 
 }

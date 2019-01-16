@@ -18,7 +18,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	public List<TableView> getGameTable() {
 		
 	 Query query = entityManager.createNativeQuery(""
-	 		+ "SELECT p.nick_name, sum(r.points) points\n" + 
+	 		+ "SELECT p.id, p.nick_name, sum(r.points) points\n" + 
 	 		", count(rwin.id) win\n" + 
 	 		", count(rdraw.id) draw \n" + 
 	 		", count(rlose.id) lose\n" + 
@@ -38,7 +38,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	@Override
 	public List<TableView> getGameTableByNumber(int number) {
 		 Query query = entityManager.createNativeQuery(""
-			 		+ "SELECT p.nick_name, sum(r.points) points\n" + 
+			 		+ "SELECT p.id, p.nick_name, sum(r.points) points\n" + 
 			 		", count(rwin.id) win\n" + 
 			 		", count(rdraw.id) draw \n" + 
 			 		", count(rlose.id) lose\n" + 
