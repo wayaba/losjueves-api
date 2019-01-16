@@ -29,7 +29,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	 		"left join result rwin on (g.id_result = rwin.id and rwin.id = 1)\n" + 
 	 		"left join result rdraw on (g.id_result = rdraw.id and rdraw.id = 2)\n" + 
 	 		"left join result rlose on (g.id_result = rlose.id and rlose.id = 3)\n" + 
-	 		"group by p.nick_name\n" + 
+	 		"group by p.nick_name, p.id\n" + 
 	 		"order by points desc",TableView.class);
 		
 		return query.getResultList();
@@ -51,7 +51,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 			 		"left join result rlose on (g.id_result = rlose.id and rlose.id = 3)\n" +
 			 		"inner join game_date gd on (g.id_game_date = gd.id)\n" +
 			 		"where gd.number <= " + number +"\n" +
-			 		"group by p.nick_name\n" + 
+			 		"group by p.nick_name, p.id\n" + 
 			 		"order by points desc",TableView.class);
 				
 				return query.getResultList();

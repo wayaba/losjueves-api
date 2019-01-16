@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class TableView {
 
 	@Id
-	private long id_player;
+	private long id;
 	
     private String nick_name;
 
@@ -43,9 +43,19 @@ public class TableView {
         	setPj((String) value);
         } else if (((String) column).equals("lose")) {
         	setLose((String) value);
-        }
+        } else if (((String) column).equals("id")) {
+        	setId((long) value);
+        }	
     }
     
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getNick_name() {
 		return nick_name;
 	}
