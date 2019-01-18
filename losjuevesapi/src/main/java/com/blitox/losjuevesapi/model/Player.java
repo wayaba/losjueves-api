@@ -17,7 +17,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "player")
 public class Player {
 //https://dzone.com/articles/spring-boot-2-hibernate-5-jpa-mysql-crud-rest-api
-	private long id; 
+	private long id;
+	private String description;
 	private String firstName; 
 	private String lastName;
 	private String nickName;
@@ -77,6 +78,14 @@ public class Player {
 	}
 
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
 		return "Player [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", nickName=" + nickName

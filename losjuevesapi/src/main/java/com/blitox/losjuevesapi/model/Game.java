@@ -17,6 +17,7 @@ public class Game {
 	private GameDate gameDate; 
 	private Team team;
 	private Result result;
+	private Side side;
 	
 	public Game() {
 		
@@ -71,10 +72,15 @@ public class Game {
 	public void setResult(Result result) {
 		this.result = result;
 	}
-	
-	
 
+	@ManyToOne
+	@JoinColumn(name="id_side", nullable=true)
+	public Side getSide() {
+		return side;
+	}
 
-    
+	public void setSide(Side side) {
+		this.side = side;
+	}
 
 }

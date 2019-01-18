@@ -40,8 +40,13 @@ public class PlayerController {
 	}
 	
 	@GetMapping("/players/{id}/detail")
-	public List<PlayerDetail> getPlayerDetail(@PathVariable(value = "id") Long id){
-		return playerRepository.getPlayerDetail(id);  
+	public HashMap<String, Object> getPlayerDetail2(@PathVariable(value = "id") Long id) throws ResourceNotFoundException{
+		
+		Player player = playerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Player not found for this id :: " + id));
+	    HashMap<String, Object> map = new HashMap<>();
+	    map.put("detail", playerRepository.getPlayerDetail(id));
+	    map.put("player", player);
+	    return map;
 	}
 	
 	@PostMapping("/players") 
