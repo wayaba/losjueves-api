@@ -21,8 +21,11 @@ public class TableView {
     
     private String pj;
 
+    private String dif;
     
-    /**
+    
+
+	/**
      * Generic put method to map JPA native Query to this object.
      *
      * @param column
@@ -45,6 +48,8 @@ public class TableView {
         	setLose((String) value);
         } else if (((String) column).equals("id")) {
         	setId((long) value);
+        } else if (((String) column).equals("dif")) {
+        	setDif((String) value);
         }	
     }
     
@@ -104,4 +109,11 @@ public class TableView {
 		this.pj = pj;
 	}
 
+	public String getDif() {
+		return dif;
+	}
+
+	public void setDif(String dif) {
+		this.dif = dif;
+	}
 }

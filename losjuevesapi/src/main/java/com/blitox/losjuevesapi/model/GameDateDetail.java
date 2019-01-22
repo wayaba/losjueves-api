@@ -9,10 +9,8 @@ public class GameDateDetail {
 	@Id
 	private long id;
 	 
-    private String description;
-    private int number;
-    private String date;
     private String nick_name;
+    private long id_player;
     private String result;
     private String team;
     
@@ -25,12 +23,6 @@ public class GameDateDetail {
     public void put(Object column, Object value) {
         if (((String) column).equals("nick_name")) {
         	setNick_name((String) value);
-        } else if (((String) column).equals("description")) {
-        	setDescription((String) value);
-        } else if (((String) column).equals("number")) {
-        	setNumber((int) value);
-        } else if (((String) column).equals("date")) {
-        	setDate((String) value);
         } else if (((String) column).equals("result")) {
         	setResult((String) value);
         } else if (((String) column).equals("team")) {
@@ -40,36 +32,20 @@ public class GameDateDetail {
         } 
     }
 
+	public long getId_player() {
+		return id_player;
+	}
+
+	public void setId_player(long id_player) {
+		this.id_player = id_player;
+	}
+
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
 	}
 
 	public String getNick_name() {

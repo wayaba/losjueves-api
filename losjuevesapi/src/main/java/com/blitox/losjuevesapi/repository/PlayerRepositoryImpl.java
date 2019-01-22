@@ -15,7 +15,7 @@ public class PlayerRepositoryImpl implements PlayerRepositoryCustom{
 	EntityManager entityManager;
 	
 	@Override
-	public List<PlayerDetail> getPlayerDetail(long id) {
+	public List<PlayerDetail> getPlayerDetailByTeam(long id) {
 		
 	 Query query = entityManager.createNativeQuery(""
 	 		+ "SELECT t.description\n" + 
@@ -41,6 +41,33 @@ public class PlayerRepositoryImpl implements PlayerRepositoryCustom{
 		return query.getResultList();
 	}
 
+	@Override
+	public List<PlayerDetail> getPlayerDetailBySide(long id) {
+		
+	 Query query = entityManager.createNativeQuery(""
+	 		+ "SELECT s.description\n" + 
+	 		
+	 		", sum(r.points) points\n" + 
+	 		", count(rwin.id) win\n" + 
+	 		", count(rdraw.id) draw\n" + 
+	 		", count(rlose.id) lose\n" +
+	 		", count(g.id) pj\n" +
+	 		", count(mvp.id) mvp\n" +
+	 		"FROM game g \n" + 
+	 		"inner join player p on (g.id_player = p.id)\n" + 
+	 		"inner join side s on (g.id_team = s.id)\n" +
+	 		"inner join result r on (g.id_result = r.id)\n" + 
+	 		"left join result rwin on (g.id_result = rwin.id and rwin.id = 1)\n" + 
+	 		"left join result rdraw on (g.id_result = rdraw.id and rdraw.id = 2)\n" + 
+	 		"left join result rlose on (g.id_result = rlose.id and rlose.id = 3)\n" +
+	 		"left join game_date mvp on (g.id_game_date = mvp.id and g.id_player = mvp.id_player)\n" +
+	 		"where g.id_player = " + id +"\n" +
+	 		"group by s.description\n" + 
+	 		"order by points desc",PlayerDetail.class);
+		
+		return query.getResultList();
+	}
+	
 	@Override
 	public List<PlayerDetail> getPlayerDetailByGameDate(long id, int number) {
 		 Query query = entityManager.createNativeQuery(""

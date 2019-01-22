@@ -17,13 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blitox.losjuevesapi.exception.ResourceNotFoundException; 
 import com.blitox.losjuevesapi.model.GameDate;
 import com.blitox.losjuevesapi.model.GameDateDetail;
-import com.blitox.losjuevesapi.repository.GameDateRepository; 
+import com.blitox.losjuevesapi.model.Player;
+import com.blitox.losjuevesapi.model.Team;
+import com.blitox.losjuevesapi.repository.GameDateRepository;
+import com.blitox.losjuevesapi.repository.TeamRepository; 
 
 @RestController @RequestMapping("/losjueves/api")
 public class GameDateController {
 
 	@Autowired
 	private GameDateRepository gameDateRepository;
+	private TeamRepository teamRepository;
 	
 	@GetMapping("/gamedates")
 	public List<GameDate> getAllGameDate(){
@@ -40,10 +44,21 @@ public class GameDateController {
 	public GameDate createGameDate(@Valid @RequestBody GameDate gameDate) { 
 		return gameDateRepository.save(gameDate); 
 	}
-	
+	/*
 	@GetMapping("/gamedates/detail")
-	public List<GameDateDetail> getgetGameDateDetail(){
+	public List<GameDateDetail> getGameDateDetail(){
 		return gameDateRepository.getGameDateDetail();
+	}
+	*/
+	@GetMapping("/gamedates/detail2")
+	public HashMap<String, Object> getGameDateDetail2(){
+		
+		GameDate gameDate = gameDateRepository.getLastGameDate();
+	    HashMap<String, Object> map = new HashMap<>();
+	    map.put("gameDate", gameDate);
+	    map.put("detail", gameDateRepository.getPlayersByWeek(gameDate.getNumber()));
+	    
+	    return map;
 	}
 	
 	@PutMapping("/gamedates/{id}") 

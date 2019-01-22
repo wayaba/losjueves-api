@@ -22,6 +22,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	 		", count(rwin.id) win\n" + 
 	 		", count(rdraw.id) draw \n" + 
 	 		", count(rlose.id) lose\n" + 
+	 		", (count(rwin.id) - count(rlose.id)) as dif\n" +
 	 		", count(g.id) pj\n" + 
 	 		"FROM game g \n" + 
 	 		"inner join player p on (g.id_player = p.id)\n" + 
@@ -30,7 +31,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
 	 		"left join result rdraw on (g.id_result = rdraw.id and rdraw.id = 2)\n" + 
 	 		"left join result rlose on (g.id_result = rlose.id and rlose.id = 3)\n" + 
 	 		"group by p.nick_name, p.id\n" + 
-	 		"order by points desc",TableView.class);
+	 		"order by points desc, dif desc, p.nick_name",TableView.class);
 		
 		return query.getResultList();
 	}

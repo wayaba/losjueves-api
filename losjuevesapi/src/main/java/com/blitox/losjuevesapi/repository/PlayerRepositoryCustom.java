@@ -9,6 +9,7 @@ import com.blitox.losjuevesapi.model.PlayerDetail;
 @Repository
 public interface PlayerRepositoryCustom{
 
-	List<PlayerDetail> getPlayerDetail(long id);
+	List<PlayerDetail> getPlayerDetailByTeam(long id);
+	List<PlayerDetail> getPlayerDetailBySide(long id);
 	List<PlayerDetail> getPlayerDetailByGameDate(long id, int number);
 }
