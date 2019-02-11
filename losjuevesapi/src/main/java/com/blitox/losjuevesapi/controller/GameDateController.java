@@ -68,6 +68,7 @@ public class GameDateController {
 		gameDate.setNumber(gameDateDetails.getNumber()); 
 		gameDate.setDate(gameDateDetails.getDate());
 		gameDate.setMvp(gameDateDetails.getMvp());
+		gameDate.setGoal(gameDateDetails.getGoal());
 		final GameDate updatedGameDate = gameDateRepository.save(gameDate); 
 		return ResponseEntity.ok(updatedGameDate); 
 	}

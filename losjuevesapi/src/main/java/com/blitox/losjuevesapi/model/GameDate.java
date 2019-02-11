@@ -22,6 +22,7 @@ public class GameDate {
 	private String description;
 	private int number;
 	private Player mvp;
+	private Player goal;
 	
 	public GameDate() {
 		
@@ -73,4 +74,12 @@ public class GameDate {
 		this.mvp = mvp;
 	}
 	
+	@ManyToOne
+	@JoinColumn(name="id_player", nullable=true)
+	public Player getGoal() {
+		return goal;
+	}
+	public void setGoal(Player goal) {
+		this.goal = goal;
+	}
 }
