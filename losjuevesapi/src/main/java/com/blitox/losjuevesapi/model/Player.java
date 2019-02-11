@@ -27,6 +27,9 @@ public class Player {
 	@OneToMany(mappedBy="mvp")
 	private List<GameDate> mvps;
 	
+	@OneToMany(mappedBy="goal")
+	private List<GameDate> goals;
+	
 	public Player() {
 		
 	}

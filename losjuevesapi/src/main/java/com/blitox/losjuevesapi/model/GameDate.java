@@ -75,7 +75,7 @@ public class GameDate {
 	}
 	
 	@ManyToOne
-	@JoinColumn(name="id_player", nullable=true)
+	@JoinColumn(name="id_player_goal", nullable=true)
 	public Player getGoal() {
 		return goal;
 	}
