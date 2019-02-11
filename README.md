@@ -3,11 +3,12 @@ Una api para la app de los jueves FC
 
 Para compilar y dejar el jar listo para que el servicio lo tome
 
+```
 cd /home/ppedraza/git/losjueves-api/losjuevesapi/
 mvn package
 cd /opt/prod/
 sudo cp /home/ppedraza/git/losjueves-api/losjuevesapi/target/losjuevesapi-0.0.1-SNAPSHOT.jar .
-
+```
 
 
 
